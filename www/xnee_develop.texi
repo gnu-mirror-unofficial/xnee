@@ -1,0 +1,92 @@
+\input texinfo  @c -*- Texinfo -*-
+@c %**start of header
+@setfilename xnee_develop.info
+@settitle Xnee Developer Manual
+@setchapternewpage off
+@c %**end o
+
+@include dev_version.texi
+
+
+@dircategory Miscellaneous
+@direntry
+* : (Xnee).        Xnee's Not Event Emulator.
+@end direntry
+
+@c Put everything in one index (arbitrarily chosen to be the concept index).
+@syncodeindex fn cp
+@syncodeindex ky cp
+@syncodeindex pg cp
+@syncodeindex vr cp
+
+@c This is used by a cross ref in make-stds.texi
+@set CODESTD  1
+@iftex
+@set CHAPTER chapter
+@end iftex
+@ifinfo
+@set CHAPTER node
+@end ifinfo
+
+
+
+@titlepage
+@sp 10
+@c omment The title is printed in a large font
+@center @titlefont{Xnee Developer Manual}
+
+@c The following two commands start the copyright page.
+@page
+@vskip 0pt plus 1filll
+Copyright (C) 1999-2003 Henrik Sandklef.
+@title Xnee Developer Manual
+@subtitle a recorder, replayer and distributor for X Window System
+@subtitle version @value{VERSION} @value{UPDATED} 
+@author Henrik Sandklef
+@c include xnee_copying
+@end titlepage
+
+
+
+
+@ifinfo
+@node Top, Introduction, (dir), (dir)
+@top Introduction
+@c include xnee_copying
+@end ifinfo
+
+
+@menu
+* Introduction::         Xnee Devlopment Introduction
+* Index::                Index
+* Overview::                Xnee Development Overview
+* Download::         Xnee Development Download
+* Build::             Xnee Development Build Instructions
+* FAQ::                  Xnee FAQ
+* Copying This Manual::  Copying This Manual
+@end menu
+
+
+@shortcontents
+
+
+@include xnee_intro.texi
+@include xnee_devel_over.texi
+@include xnee_devel_down.texi
+@include xnee_devel_build.texi
+@include xnee_faq.texi
+
+
+@node Copying This Manual
+@appendix Copying This Manual
+
+@include fdl.texi
+
+@node Index
+@chapter Index
+@printindex cp
+
+@contents
+
+@bye
+

@@ -1,0 +1,17 @@
+@node Examples
+@chapter Xnee usage examples
+
+@section Getting started
+
+@section Recorder
+
+TBD
+
+@section Replayer
+
+TBD
+
+@section Distributor
+
+TBD
+

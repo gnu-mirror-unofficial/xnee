@@ -1,0 +1,26 @@
+HI !
+
+In order to release it ASAP I include this usage text file.
+
+Basic stuff:
+ to record:
+
+  xnee_record -o xnee.log
+
+
+ to replay 
+ 
+  xnee_replay -file xnee.log
+
+
+
+ to get hints on recording 
+ 
+   xnee_record --help
+
+
+
+Problem:
+
+ Sometimes the first event recorded is a KeyRelease (from the Enter key when starting the program). 
+ If you encounter problems when replaying, remove the first line in your log file ... hopefully it works:)

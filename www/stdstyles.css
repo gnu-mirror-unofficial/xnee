@@ -1,0 +1,284 @@
+.topofpage {
+	border-style:solid;
+	border-width:0px;
+	padding:8pt;
+	margin-left:none;
+	margin-right:none;
+	margin-top:none;
+	margin-bottom:2pt;
+}
+
+.navbar{
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-left-style:0;
+	border-right-style:0;
+	border-left-width:0px;
+	border-right-width:0px;
+	border-top-width:1px;
+	border-bottom-width:1px;
+	border-color:black;
+	background-color:#99CCFF;
+	padding:4pt;
+	margin-top:10px;
+	margin-bottom:5px;
+	margin-left:0;
+	margin-right:0;
+}
+
+DIV.navbar {
+	margin-top:30pt;
+}
+
+.navbar .treelink {
+	font-weight:bold;
+	font-family:sans-serif;
+}
+
+.navbar .prevnextlink {
+	font-weight:bold;
+}
+
+.navbar CODE {
+	font-weight:bold;
+}
+
+.navbar A:link {color:#0000CC;}
+.navbar A:visited {color: purple}
+.navbar A:active {color: red}
+
+.valuedesc {
+	font-weight:200;
+}
+
+.bigletters {
+	font-size: 125%;
+	font-weight: 700;
+}
+
+.tagengname { 
+	font-family: sans-serif;
+}
+
+.tagexample {
+	font-family:monospace;
+}
+
+.attdescription {
+	font-size:70%;
+	font-weight:normal;
+	font-family:sans-serif;
+}
+
+.attexample {
+	font-family:monospace;
+}
+
+.parentmarkup {
+	font-size:80%;
+}
+
+.path {
+	font-family:'sans-serif';
+	font-size:125%;
+}
+
+A.referback {
+	font-family: sans-serif;
+	font-size: 125%;
+}
+
+.sidenote {
+	background-color: #66FF00;
+	color: #000000;
+	font-family: sans-serif;
+	font-size: 110%;
+	text-align: center;
+}
+
+.sidenote A:link { color: red }
+.sidenote A:visited { color: red}
+
+PRE.exampletext {
+	background-color:#cccccc;
+	border-style:solid;
+	border-width:1;
+	padding:10;
+	white-space: pre;
+	color:black;
+}
+
+.examplenumbers {
+	color:teal;
+	font-weight:600;
+}
+
+PRE.examplenumbers {
+	background-color:white;
+	border-style:solid;
+	border-width:1;
+	border-color:white;
+	padding:10;
+	white-space: pre;
+}
+
+PRE.exampletext I {
+	color:gray;
+}
+
+EM.examplecode {
+	color:#009999;
+	font-style: normal;
+	font-family: monospace;
+	font-weight:bold;
+}
+
+UL.tagsupp {
+	font-family: sans-serif;
+	font-size:70%;
+	margin-top:0ex;
+	margin-bottom:1ex;
+}
+
+.HeadLine {
+	font-family:sans-serif;
+	font-size:120%;
+}
+
+.inset {
+	font-size:80%;
+	font-family:sans-serif;
+	background-color:#99CCFF;
+}
+
+.inset H1 {
+	font-size:150%;
+}
+
+.inset H2 {
+	font-size:110%;
+}
+
+.quotes {
+	text-align:center;
+	font-family:sans-serif;
+	font-size:80%;
+}
+
+.quotes H2
+{
+font-size:110%;
+}
+
+.quotes A {
+	font-style:italic;
+	font-size:90%;
+}
+
+DL.def DT {
+	font-weight:800;
+	font-size:120%;
+}
+
+DL.def DD {
+	padding-bottom:7pt;
+}
+
+.widetable TH,.widetable TD{padding-left: 25px;}
+.leftcell{padding-left: 0pt;}
+
+.gen {
+	border-top-style:solid;
+	border-top-width:3pt;
+	border-bottom-style:solid;
+	border-bottom-width:3pt;
+	border-top-style:solid;
+	border-top-width:3pt;
+	border-right-style:none;
+	border-right-width:0pt;
+	border-left-style:none;
+	border-left-width:0pt;
+	border-color:blue;
+	padding:2;
+	margin-left:10pt;
+	margin-right:10pt;
+	margin-bottom:10pt;
+	font-weight:bold;
+	font-family:sans-serif;
+	font-size:12pt;
+}
+
+.searchinput, .searchinput SELECT, .searchinput INPUT {
+	font-size:8pt;
+}
+
+.unframe {
+	font-family:sans-serif;
+	font-size:130%;
+}
+
+.seealso {
+	border-style:solid;
+	border-width:1px;
+	border-color:black;
+	background-color:#33CC00;
+	padding:2pt;
+	margin-bottom:8pt;
+	font-family:sans-serif;
+	font-size:10pt;
+}
+
+.seealso UL {
+	margin-top:1pt;
+}
+
+.superem {
+	border-style:ridge;
+	border-width:5;
+	border-color:#00FF00;
+	padding:4pt;
+	margin-left:15pt;
+	margin-right:15pt;
+	margin-bottom:10pt;
+}
+
+.superem H2 {
+	font-family:sans-serif;
+	font-size:120%;
+	color:#330099;
+	margin-top:0;
+}
+
+.seealso H2 {
+	font-family:sans-serif;
+	font-size:110%;
+	margin-top:0;
+	margin-bottom:1;
+}
+.formenhance {
+	border-style:solid;
+	border-width:2pt;
+	border-color:blue;
+	padding:6;
+	margin-left:10%;
+	margin-right:10%;
+	font-family:sans-serif;
+	text-align:center;
+}
+
+/* supplemental pages, contents listing */
+.suppcontents {
+	background-color:yellow;
+	color:black;
+	font-size:85%;
+	font-family:sans-serif;
+	margin-right:10pt;
+}
+
+.suppcontents H2 {
+	font-size:105%;
+}
+
+.suppcontents LI {
+	list-style:none;
+}
