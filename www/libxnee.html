@@ -13,7 +13,7 @@
 <body bgcolor="#999999">
 
 
-<P class="theader">libxnee is basically xnee / Description</P>
+<P class="theader">libxnee / description</P>
      <DL>
        <DT>
          <dd>
@@ -24,11 +24,40 @@
   <tr>
 
     <td>
-	  <h2>libxnee</h2>
+	  <h2>Summary</h2>
           libxnee is the library built to make it easy to implement
           clients with the recording and replaying functionality. 
           <br>
+	  <h2>Background</h2>
+	  The whole projext started as being one command line program, cnee.
+	  cnee was initially called xnee. When the Xnee project
+	  got bigger and more used the idea of a GUI program came up
+	  (today <a href="gnee.html">gnee</a>) we decided to split Xnee 
+	  into two parts. One library (today <a href="libxnee.html">
+	  libxnee</a>) and one program (today <a href="cnee.html">cnee</a>).
+	  <br>
+	  
+	  <h2>Features</h2>
+	  <DL>Main features:
+            <DT>
+              <DD>- simple API (at least that's what we think)</DD>
+              <DD>- record an Xnee session file</DD>
+              <DD>- replay an Xnee session file</DD>
+              <DD>- create/write Xnee project files</DD>
+              <DD>- read Xnee project files</DD>
+              <DD>- distribute device events to multiple displays</DD>
+	    </DT>
+          </DL>
           
+          <br>
+	  <h2>Requirements</h2>
+	  <DL>
+	    <DT>
+               <dd>X11 server and client libs (e.g XFree86)</DD>
+               <dd>RECORD extension</DD>
+               <dd>XTest extension</DD>
+	    </DT>
+          </DL>
           
             
     </td>

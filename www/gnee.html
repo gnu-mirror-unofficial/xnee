@@ -13,7 +13,7 @@
 <body bgcolor="#999999">
 
 
-<P class="theader">gnee's not an emulator either / Description</P>
+<P class="theader">gnee / description</P>
      <DL>
        <DT>
          <dd>
@@ -23,24 +23,57 @@
 <table border=0>
   <tr>
     <td>
-	  <h2>Gnee</h2>
+	  <h2>Summary</h2>
           Gnee is the GUI frontend to libxnee.
+	  <br>
+	  <br>
+          With gnee you can record and replay user actions
+          just as you can with <a href="cnee.html">cnee</a>.
+	  Screenshots of gnee can be found <a href="gnee_scr.html">here</a>.
           <br>
-	  <h2>Description</h2>
-          With Gnee you can record and replay user actions
-          jst as you can with <a href="xnee.html">xnee</a>.
-
+          <br>
+	  <h2>Background</h2>
+	  Allthough Xnee is mostly used by developers (and not 'ordinary
+	  users') who are used to use command line programs we soon 
+	  saw the need for a GUI program. When giving it some thoughts
+	  we realised that such a program and <a href="cnee.html">cnee</a>
+	  would actually benefit from each other. As an example of the 
+	  benfitial usage of the two you can develop an Xnee project 
+	  file using gnee and use this with <a href="cnee.html">cnee</a>
+	  when doing automatic regression tests.
+	  <br>
+	  <br>
           You can also use Gnee to make 
           Xnee project files
           that both xnee and Gnee can use. This makes it easier for
           people not so familiar with the X11 protocol to use
           Xnee (both xnee and Gnee). For more information
           about the project file, read the user manual.
-          
-          <DL>
-             <DT>Gnee requirements: 
-               <dd><a href="libxnee.html">libxnee</a>. 
-               <dd>gtk
+          <br>
+	  <h2>Features</h2>
+	  gnee comes with all features that is offered by 
+	  <a href="libxnee.html">libxnee</a>. The same features are offered 
+	  by the command line program program <a href="cnee.html">cnee</a>. 
+	  With gnee it is easier (than with <a href="cnee.html">cnee</a>) 
+	  to get started with using Xnee as a automatic test tool. 
+	  <br>
+	  <DL>Main features:
+            <DT>
+              <DD>- record an Xnee session file</DD>
+              <DD>- replay an Xnee session file</DD>
+              <DD>- create/write Xnee project files</DD>
+              <DD>- read Xnee project files</DD>
+              <DD>- distribute device events to multiple displays</DD>
+	    </DT>
+          </DL>
+
+          <br>
+	  <h2>Requirements</h2>
+	  <DL>
+	    <DT>
+               <dd><a href="libxnee.html">libxnee</a>. </DD>
+               <dd>gtk2</DD>
+	    </DT>
           </DL>
           
 
