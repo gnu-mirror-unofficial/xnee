@@ -41,7 +41,7 @@
   .... it just sounds nice! 
 
 @item Can you add xxx functionality to Xnee
-  Send an email to @email{xnee@@sandklef.com} and we'll consider it.
+  Send an email to @email{xnee2@@sandklef.com} and we'll consider it.
 
 
 @item When starting Xnee I get noticed that I am missing RECORD extension
@@ -78,7 +78,7 @@ Recompile and reinstall the Xserver and make sure that RECORD extension is built
 
 @item Where do I send questions?
 @cindex questions is sent where?
- @email{xnee@@sandklef.com}
+ @email{xnee2@@sandklef.com}
 
 
 @end table
