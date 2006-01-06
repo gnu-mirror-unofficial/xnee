@@ -10,10 +10,10 @@
 @include version.texi
 
 
-@c dircategory Miscellaneous
-@c direntry
-@c * : (Xnee).        Xnee's Not Event Emulator.
-@c end direntry
+@dircategory Miscellaneous
+@direntry
+@ * : (Xnee).        Xnee's Not Event Emulator.
+@end direntry
 
 
 @c Put everything in one index (arbitrarily chosen to be the concept index).
@@ -42,56 +42,84 @@
 @c The following two commands start the copyright page.
 @page
 @vskip 0pt plus 1filll
-Copyright (C) 1999-2002 Henrik Sandklef.
 @title Xnee Manual 
-@subtitle a recorder, replayer and sistributor for X Window System
+@subtitle Xnee is a suite of programs with,
+@subtitle recording, replaying and 'distribution'
+@subtitle capabilities for X Window System
 @subtitle version @value{VERSION} @value{UPDATED} 
 @author Henrik Sandklef
-@c include xnee_copying
+@include xnee_copying
 @end titlepage
 
 
-
-
-
 @ifinfo
-@node Top, Introduction, (dir), (dir)
-@top Introduction
-
-@c include xnee_copying
+@node Top, Summary,, (dir)
+@top 
+@include xnee_copying
 @end ifinfo
 
 
 @menu
-* Introduction::         Xnee Introduction
-* Index::                Index
-* Usage::                Xnee Usage
-* Installation::         Xnee Installation
-* Examples::             Xnee Usage Examples
-* Synchronisation::      Xnee Synchronisation
-* Requirements::         Xnee Requirements
-* FAQ::                  Xnee FAQ
+* Summary::              Summary
+* Getting started::      Getting started
+* Functional overview::  Functional overview
+* Installation::         Installation
+* Examples::             examples
+* File format::          File format
+* Internals::            Internals
+* Requirements::         Requirements
+* FAQ::                  FAQ
 * Copying This Manual::  Copying This Manual
+* Index::                Index
 @end menu
 
 
 @shortcontents
 
+@node    Summary, Getting started, top, top
 @include xnee_intro.texi
-@include xnee_usage.texi
+@page
+
+@node    Getting started, Functional overview, Summary, top
+@include xnee_start.texi
+@page
+
+@node    Functional overview, Installation, Getting started, top
+@include xnee_func.texi
+@include xnee_general.texi
+@page
+
+
+@node    Installation, Examples, Functional overview, top
 @include xnee_install.texi
+@page
+
+@node    Examples, File format, Installation, top
 @include xnee_exampl.texi
-@include xnee_synch.texi
+@page
+
+@node    File format, Internals, Examples, top
+@include xnee_prot.texi
+@page
+
+@node    Internals, Requirements, File format, top
+@include xnee_intern.texi
+@page
+
+@node    Requirements , FAQ, Internals, top
 @include xnee_req.texi
+@page
+
+@node    FAQ, Copying This Manual, Requirements, top
 @include xnee_faq.texi
+@page
 
 
-@node Copying This Manual
+@node    Copying This Manual, Index, FAQ, top
 @appendix Copying This Manual
-
 @include fdl.texi
 
-@node Index
+@node    Index, (dir), Copying This Manual, top
 @chapter Index
 @printindex cp
 

@@ -1,59 +1,73 @@
-@node Introduction, Index, Top, Top
-@chapter Xnee Introduction
+@chapter Summary
 
-@section Short description
-Xnee can record and replay an X session. Xnee also has the ability to
-distribute events to multiple displays.
+@section Summary
+  Xnee is a suite of programs that can record, replay and
+  distribute user actions under the X11 environment. 
+  Think of it as a robot that can imitate the job you just 
+  did. 
 
+Xnee consists of one library and two applications
+
+  @b{cnee} - command line program
+
+  @b{gnee} - graphical user interface program
+
+  @b{libxnee} - library used by xnee and gnee
+
+            
+            
 @section Xnee features
 @cindex features
 
-@b{Test tool}
-Instead of performing test cases for a GUI (or CLI program) cases 
-over and over again, the test cases can be automated. Simply record 
-a user session and replay it later. 
+Xnee can be used for multiple purposes, allthough it was initially designed as a test tool. The most used features are the foloowing:
 
-@b{Performance test tool}
+@b{Test tool} - 
+        Instead of performing test cases for a GUI (or CLI program) 
+        over and over again, the test cases can be automated. Simply record 
+        a user session and replay it later. 
+
+@b{Performance test tool} - 
 	If you want to simulate lots of simultaneous users in a network (or
-	a local machine) you can use Xnee. Simply record a (or many) users
-	sessions and start multiple instances of Xnee.
+	a local machine) you can use Xnee. Simply record a user
+	session and start multiple instances of Xnee.
 
-@b{Demo tool}
+@b{Demonstration tool} - 
 	You can use Xnee to demonstrate the features of your program. Simply 
 	record a user session and replay it later. 
 
-@b{Distribution tool}
+@b{Distribution tool} - 
 	If you want to send over your mouse/keyboard actions to another display
 	you can use the built-in distribution mechanism in Xnee. 
 
+@b{Macro recorder/replayer} - 
+	By binding a key and modifier combination (e.g using xkeymouse)
+  to replay a recorded session you will have a Window Manager and 
+  application independent macro.
+
+@b{File retyper} - 
+   Xnee can retype the contents of a file. This can be useful
+   during tests or if you want xnee to answer some command
+   session without having to record the session.
 
 
 @section Background
 @cindex background
 In order to verify that a program does the job it's supposed to do, 
-certain tests have to be made. These tests are, IMHO, perhaps the most 
-boring things a programmer can do. With xnee the testcase(s) can be 
-recorded and later on replayed. Xnee can also distribute events (both 
-when recording and replaying) to other displays.
+certain tests have to be made. 
+These tests are, IMHO, perhaps the most boring things a programmer 
+can do. XNee is designed to reduce the programmer from this burden.
+@*
 
-Initially, Xnee was made to release the programmer (that's me) from the burdon of testing, who hopefully will be writing free software instead (I am doing that), from this burdon.
+Xnee started out as a commad line program. During the development
+phase the main functionality was broken out to a library, called
+libxnee. The command line program was renamed cnee. The thought behind 
+making the library was to enable the writing of other clients than just 
+the command line. Today there is a GUI program, gnee, that uses the library.
+@*
 
+By using xnee your testcase(s) can be recorded and later on replayed.
+Xnee comes with other features For more information about these, read the 
+Introduction.
 
-@section How does it work
-@cindex how does xnee work
-Xnee uses X Windows System. For more information about this lovely 
-system, go to : 
-@itemize @bullet
-@item	X.org                   @url{http://www.x.org}
-@item	XFree86 		@url{http://www.xfree86.org}
-@item	Ken Lee's X site	@url{http://www.rahul.net/kenton/xsites.html}
-@end itemize
-
-Xnee receives X11 protocol data (e g XEvents) from an X server and prints
-them to a file (or stdout). Mouse and kwyboard actions generate device events. 
-These events can be relpayed. Other X11 data can also recorded. These data is 
-used when replaying to synchronise. This is not only useful but essential. 
-We can not replay or regenerate keyboard-events to a window before it's 
-ready to "receive" events. By recording data other than device events
 
 

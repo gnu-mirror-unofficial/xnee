@@ -1,118 +1,134 @@
 ###info_TEXINFOS=xnee.texi
-xnee_TEXINFOS=xnee_error.texi version.texi dev_version.texi xnee_error.texi xnee_exampl.texi xnee_faq.texi xnee_install.texi xnee_intro.texi xnee_req.texi xnee_synch.texi xnee_usage.texi xnee_devel_build.texi  xnee_devel_over.texi  xnee_devel_down.texi  xnee_develop.texi
+xnee_TEXINFOS=xnee_error.texi xnee_prot.texi version.texi  xnee_error.texi xnee_exampl.texi xnee_faq.texi xnee_install.texi xnee_intro.texi xnee_req.texi xnee_synch.texi xnee_usage.texi xnee_general.texi xnee_start.texi  xnee_intern.texi xnee_copying fdl.texi xnee_func.texi
 
+EXTRA_DIST = xnee_copying fdl.texi *.dia xnee.dox
 
-
-man1_MANS=xnee.1
 
 #MAKEINFO = @MAKEINFO@ --no-split
-TEXI2HTML = texi2html
-DVI2PS = dvi2ps
-PS2PDF = ps2pdf
+#TEXI2HTML = texi2html
+#DVI2PS = dvi2ps
+#PS2PDF = ps2pdf
+
+
+
 
 ###   TEXI2HTML_FLAGS = -split_chapter
 
-info_TEXINFOS = xnee.texi xnee_develop.texi
+info_TEXINFOS = xnee.texi 
 
 CLEANFILES = xnee.acs  xnee.cvs  xnee.mss  xnee.prs \
 	     xnee.ats  xnee.evs  xnee.fns  xnee.ovs \
              xnee.tmp  *.1       *.html    \
-             stamp-vti *.pdf     *.txt     *.info 
-##
+             stamp-vti *.pdf     *.txt     *.info \
+             */*.png */*.eps */*.pdf *.png *.eps *.pdf 
+
+
+
+
+IMG_DIA = xndetail.dia xngener.dia xnrec.dia xnrep.dia xnswinp.dia 
+IMG_EPS = xndetail.eps xngener.eps xnrec.eps xnrep.eps xnswinp.eps 
+IMG_PDF = xndetail.pdf xngener.pdf xnrec.pdf xnrep.pdf xnswinp.pdf 
+IMG_PNG = xndetail.png xngener.png xnrec.png xnrep.png xnswinp.png
+IMG_JPG = xndetail.jpg xngener.jpg xnrec.jpg xnrep.jpg xnswinp.jpg
+
+GEN_IMAGES = ${IMG_EPS} ${IMG_PDF} ${IMG_PNG} ${IMG_JPG}
+SRC_IMAGES = ${IMG_DIA}
+##	
 ##  ALL
 ##
-all: html man info txt xnee.1
+
+doc: html pdf ps txt
+
+
+images: ${SRC_IMAGES} ${GEN_IMAGES}
+
+%.jpg: %.eps
+
+
 
 
 ## ----------------------------- ##
 ## Other documentation formats.  ##
 ## ----------------------------- ##
 
-html: xnee.html xnee_develop.html
+html: xnee.html 
 
-man:  xnee.1
+pdf:  xnee.pdf 
 
-pdf:  xnee.pdf xnee_develop.pdf  
+info: xnee.info 
 
-info: xnee.info xnee_develop.info 
+txt:  xnee.txt  
 
-txt:  xnee.txt xnee_man.txt xnee_develop.txt
-
-ps:   xnee.ps xnee_develop.ps
+ps:   xnee.ps 
 
 
 
 # HTML
-xnee.html: xnee.texi 
+xnee.html: xnee.texi images
 	$(TEXI2HTML) $(TEXI2HTML_FLAGS) $(srcdir)/xnee.texi
-xnee_develop.html: xnee_develop.texi 
-	$(TEXI2HTML) $(TEXI2HTML_FLAGS) $(srcdir)/xnee_develop.texi
 
-
-# MAN
-xnee.1: ../src/cli/xnee
-	../src/cli/xnee --manpage > xnee.1
-
-# MAN_TXT
-xnee_man.txt: xnee.1
-	nroff -man < xnee.1 | perl -pe 's/\cH.//g' | uniq > xnee_man.txt
 
 # PDF for RedHat
 #xnee.pdf: xnee.texi 
 #	-$(TEXI2DVI) --pdf --batch $(srcdir)/xnee.texi
-#xnee_develop.pdf: xnee_develop.texi 
-#	-$(TEXI2DVI) --pdf --batch $(srcdir)/xnee_develop.texi
 
 # PDF for Debian
 xnee.pdf: xnee.ps 
 	$(PS2PDF)  $(srcdir)/xnee.ps
-xnee_develop.pdf: xnee_develop.texi 
-	$(PS2PDF)  $(srcdir)/xnee_develop.ps
 
 
 # DVI
-xnee.dvi:
+xnee.dvi: images
 	$(TEXI2DVI) --batch $(srcdir)/xnee.texi
 
-xnee_develop.dvi:
-	$(TEXI2DVI) --batch $(srcdir)/xnee_develop.texi
 
 # PS for RedHat
 #xnee.ps: xnee.pdf
 #	pdf2ps $(srcdir)/xnee.pdf
-#xnee_develop.ps: xnee_develop.pdf
-#	pdf2ps $(srcdir)/xnee_develop.pdf
 
 # PS for Debian
 xnee.ps: xnee.dvi
 	$(DVI2PS) -c xnee.ps $(srcdir)/xnee.dvi
 
-xnee_develop.ps: xnee_develop.dvi
-	$(DVI2PS) -c xnee_develop.ps  $(srcdir)/xnee_develop.dvi
 
 
-xnee.txt:
-	makeinfo -o xnee.txt --no-headers --no-split --no-validate xnee.texi
-
-xnee_develop.txt:
-	makeinfo -o xnee_develop.txt --no-headers --no-split --no-validate xnee_develop.texi
-
-
-develdoc: xnee.dox 
+api-doc: xnee.dox 
 	\rm -fr alldocs/
 	-mkdir alldocs
 	-mkdir alldocs/devel
 	\rm -fr latex
-	doxygen xnee.dox 
+	$(DOXYGEN) xnee.dox 
 	cd latex && make ps && make pdf
 
 
-docs:  develdoc 
-	cd doc && $(MAKE) $(AM_MAKEFLAGS) html pdf text info xnee.1 
 
-.PHONY: html pdf text info man
-
+xnee.txt:
+	$(MAKEINFO) -o xnee.txt --no-headers --no-split --no-validate xnee.texi
 
 
+all: doc
 
+#all: ${SRC_IMAGES} ${GEN_IMAGES}
 
+${IMG_EPS}: %.eps: %.dia
+	$(DIA) --nosplash -e $@ $<
+
+${IMG_PDF}: %.pdf: %.eps
+	$(EPSTOPDF) --outfile $@ $<
+
+${IMG_PNG}: %.png: %.eps
+	$(CONVERT) -density 144x144 $< $@ 
+	( mv $@ `echo $@ | sed 's,\.png,_big\.png,g'` )
+	$(CONVERT) -density 32x32 $< $@ 
+	( mv $@ `echo $@ | sed 's,\.png,_small\.png,g'` )
+	$(CONVERT) -density 60x60 $< $@ 
+
+${IMG_JPG}: %.jpg: %.eps
+	$(CONVERT) -density 144x144 $< $@ 
+	( mv $@ `echo $@ | sed 's,\.jpg,_big\.jpg,g'` )
+	$(CONVERT) -density 32x32 $< $@ 
+	( mv $@ `echo $@ | sed 's,\.jpg,_small\.jpg,g'` )
+	$(CONVERT) -density 60x60 $< $@ 
+
+clean:
+	\rm -f ${GEN_IMAGES} *_big.* *_small.*

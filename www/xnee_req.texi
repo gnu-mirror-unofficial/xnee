@@ -1,4 +1,3 @@
-@node  Requirements 
 @chapter  Xnee Requirements
 @cindex requirements
 
