@@ -1,12 +1,13 @@
 Xnee Manual
 ***********
 
-Copyright (C) 2002, 2003, 2004, 2005 Henrik Sandklef Permission is
-granted to copy, distribute and/or modify this document under the terms
-of the GNU Free Documentation License, Version 1.2 or any later version
-published by the Free Software Foundation; with no Invariant Sections,
-no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is
-included in the section entitled "GNU Free Documentation License"
+   Copyright (C) 2002, 2003, 2004, 2005, 2006 Henrik Sandklef
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
+copy of the license is included in the section entitled "GNU Free
+Documentation License"
 
 Short Contents
 **************
@@ -568,7 +569,8 @@ gnumeric.xnl Start a terminal emulator (e.g xterm)
      `xterm&'
 
    Start Xnee
-        `cnee --record --keyboard --mouse --events-to-record 400 --out gnumeric.xnl&'
+        `cnee --record --keyboard --mouse --events-to-record 400 \'
+        ` --out gnumeric.xnl&'
 
    Start gnumeric
      `gnumeric&'
@@ -583,7 +585,8 @@ gnumeric2.xnl
 Start a terminal emulator (e.g xterm) `xterm&'
 
    Start Xnee
-        `cnee --record --keyboard --mouse --events-to-record 400 --out gnumeric2.xnl\'
+        `cnee --record --keyboard --mouse --events-to-record 400 \'
+        ` --out gnumeric2.xnl\'
         `--delivered-event-range Expose,MapRequest,LeaveNotify,EnterNotify  &'
 
 Start gnumeric `gnumeric&' Start using gnumeric. Browse the menus
@@ -886,7 +889,20 @@ when replaying. To do this, start xnee like this
    Xnee will now replay the events recorded in the sessions file
 `mouse-rec.xnl' as if the screen has a resolution of 800x600.
 
-5.7.4 Using no resolution translation
+5.7.4 Using a offset when replaying
+-----------------------------------
+
+If a session was recording a centered window with a window manager and
+is to bo replayed without a window manager (still centered) you can use
+the offset switch to make Xnee replay the events in order to get the
+coordinates right.
+     `cnee --replay --file mouse-rec.xnl \ '
+     `--replay-offset 12,-7'
+   Xnee will now replay the events recorded in the sessions file
+`mouse-rec.xnl' and adding 12 to the x coordinate and subtract 7 from
+the y coordinate.
+
+5.7.5 Using no resolution translation
 -------------------------------------
 
 If a session was recorded on a screen with another resolution than the
@@ -899,7 +915,7 @@ translation. To do this, start xnee like this
 `mouse-rec.xnl' as if the screen had the same resolution the recorded
 one.
 
-5.7.5 Record another display than the default
+5.7.6 Record another display than the default
 ---------------------------------------------
 
 If you want to record another display than the default, as set in the
@@ -907,7 +923,7 @@ DISPLAY variable, you use the `--display' option.
      `cnee --record --mouse --display frodo:0.0 '
    Xnee will now record the mouse events on the display frodo:0.0.
 
-5.7.6 Replay to another display than the default
+5.7.7 Replay to another display than the default
 ------------------------------------------------
 
 If you want to replay to another display than the default, as set in the
@@ -1032,120 +1048,123 @@ The following directives are used in Xnee:
  First token    Interpretation                       
  #              The whole line is ignored.           
    As long as the first token is `#' the whole line is intrepreted as a
-comment, just as in bash. 
+comment, just as in bash.  
 
 6.4.2 Settings
 --------------
 
- Settings           Argument    Interpretation
- directive                      
- data-to-record     integer     Limits the number of data to record to to
-                                the integer value
- events-to-record   integer     Limits the number of events to record to
-                                to the integer value
- time-to-record     integer     Limits the number of seconds to record to
-                                to the integer value
- display            string      Sets the display to record or replay to
-                                the string
- distribute         string      Distribute all recorded or replayed
-                                replayable events to the display given by
-                                the string
- file               string      Read replay data from the file given by
-                                the string
- out-file           string      Print recorded data to the file given by
-                                the string
- plugin             string      Use the plugin given by the string
- first-last         boolean     Print only first and last of successive
-                                MotionNotify events
- verbose            boolean     Use verbose debugging printout
- buffer-verbose     boolean     Use verbose buffer verbose printouts (not
-                                built by default)
- time               integer     Delay the start of the Xnee action
- all-clients        boolean     Record all curret and future clients
-                                (default)
- future-clients     boolean     Record only future clients
- human-printout     boolean     Prints the recorded data in a (quite) more
-                                ser friendly format
- sync-mode          boolean     Sets recording mode
- speed-percent      integer     Sets the replaying speed percentage to the
-                                integer value
- stop-key           string,stringSets the stop key combination to the
-                                strings
- pause-key          string,stringSets the pause key combination to the
-                                strings
- resume-key         string,stringSets the resume key combination to the
-                                strings
- mark-key           string,stringSets the mark key combination to the
-                                strings
- exec-key           string,stringSets the execute key combination to
-                                strings
- replay-resolution  string      Sets the replay resolution to the string
- resolution-adjustmentboolean     Use resolution adjustment, even if the
-                                recored resolution differs from the one to
-                                replay to
- event-range        range       Sets the events to record
- error-range        range       Sets the errors to record to range*
- request-range      range       Sets the request to record to range*
- reply-range        range       Sets the replies to record to range*
- extension-request-major-rangerange       Sets the extension requests (major) to
-                                record to range*
- extension-request-minor-rangerange       Sets the extension requests (minor) to
-                                record to range*
- extension-reply-major-rangerange       Sets the extension replies (major) to
-                                record to range*
- extension-reply-minor-rangerange       Sets the extension replies (minor) to
-                                record to range*
- force-replay       boolean     Continue to replay even if Xnee is out of
-                                sync
- max-threshold      integer     Sets the maximum synchronisation threshold
- min-threshold      integer     Sets the minimum synchronisation threshold
- total-threshold    integer     Sets the total maximum synchronisation
-                                threshold
- events-to-record   integer     Sets the number of events to record
- data-to-record     integer     Sets the number of data to record
- time-to-record     integer     Sets the number of seconds to record
- store-mouse-position            If set, Xnee records the initial mouse
-                                position and makes sure that replaying
-                                starts from there
- Xnee Settings Arguments 
- Settings       Description                          Example
- argument                                            
- `integer'      is an integer value.                 1
- `string'       is a string.                         localhost
- `boolean'      is a boolean value given by true/1   true, false, 0, 1
-                or false/0                           
- `subrange'     Subrange is gives a range of data    2-5 or MapNotify
-                by specifying a start and stop      
-                  data. In the case of one data      
-                the stop data can be omitted.        
- `range'        Ranges are a comma separated list    2-3,MotionNotify-MapNotify,GravityNotify,PropertyNotify,30
-                of subranges.                        
 
+ Settings directive             Argument    Interpretation
+data-to-record                   integer     Limits the number of data to record to to
+                                             the integer value
+events-to-record                 integer     Limits the number of events to record to
+                                             to the integer value
+time-to-record                   integer     Limits the number of seconds to record to
+                                             to the integer value
+display                          string      Sets the display to record or replay to
+                                             the string
+distribute                       string      Distribute all recorded or replayed
+                                             replayable events to the display given by
+                                             the string
+file                             string      Read replay data from the file given by
+                                             the string
+out-file                         string      Print recorded data to the file given by
+                                             the string
+plugin                           string      Use the plugin given by the string
+first-last                       boolean     Print only first and last of successive
+                                             MotionNotify events
+verbose                          boolean     Use verbose debugging printout
+buffer-verbose                   boolean     Use verbose buffer verbose printouts (not
+                                             built by default)
+time                             integer     Delay the start of the Xnee action
+all-clients                      boolean     Record all curret and future clients
+                                             (default)
+future-clients                   boolean     Record only future clients
+human-printout                   boolean     Prints the recorded data in a (quite) more
+                                             ser friendly format
+sync-mode                        boolean     Sets recording mode
+speed-percent                    integer     Sets the replaying speed percentage to the
+                                             integer value
+stop-key                         string,stringSets the stop key combination to the
+                                             strings
+pause-key                        string,stringSets the pause key combination to the
+                                             strings
+resume-key                       string,stringSets the resume key combination to the
+                                             strings
+mark-key                         string,stringSets the mark key combination to the
+                                             strings
+exec-key                         string,stringSets the execute key combination to
+                                             strings
+replay-resolution                string      Sets the replay resolution to the string
+replay-offset                    int,int     Sets the replay offset to (x,y) during
+                                             replay
+resolution-adjustment            boolean     Use resolution adjustment, even if the
+                                             recored resolution differs from the one to
+                                             replay to
+event-range                      range       Sets the events to record
+error-range                      range       Sets the errors to record to range*
+request-range                    range       Sets the request to record to range*
+reply-range                      range       Sets the replies to record to range*
+extension-request-major-range    range       Sets the extension requests (major) to
+                                             record to range*
+extension-request-minor-range    range       Sets the extension requests (minor) to
+                                             record to range*
+extension-reply-major-range      range       Sets the extension replies (major) to
+                                             record to range*
+extension-reply-minor-range      range       Sets the extension replies (minor) to
+                                             record to range*
+force-replay                     boolean     Continue to replay even if Xnee is out of
+                                             sync
+max-threshold                    integer     Sets the maximum synchronisation threshold
+min-threshold                    integer     Sets the minimum synchronisation threshold
+total-threshold                  integer     Sets the total maximum synchronisation
+                                             threshold
+events-to-record                 integer     Sets the number of events to record
+data-to-record                   integer     Sets the number of data to record
+time-to-record                   integer     Sets the number of seconds to record
+store-mouse-position                         If set, Xnee records the initial mouse
+                                             position and makes sure that replaying
+                                             starts from there
+    Xnee Settings Arguments 
+Settings argument      Description                   Example
+`integer'              is an integer value.          1
+`string'               is a string.                  localhost
+`boolean'              is a boolean value given by   true, false, 0, 1
+                       true/1 or false/0             
+`subrange'             Subrange is gives a range of  2-5 or MapNotify
+                       data by specifying a start    
+                       and stop       data. In      
+                       the case of one data the      
+                       stop data can be omitted.     
+`range'                Ranges are a comma separated  2-3,MotionNotify-MapNotify,GravityNotify,PropertyNotify,30
+                       list of subranges.            
      
 
 6.4.3 Replay
 ------------
 
- Replay directive              Interpretation
- 0,0                           not valid
- 0,1                           not valid
- 0,2,keycode,time              KeyPress on key with keycode, used to
-                               replay
- 0,3,keycode,time              KeyRelease on key with keycode, used to
-                               replay
- 0,4,button nr,time            ButtonPress on button nr, used to replay
- 0,5,button nr,time            ButtonRelease on button nr, used to
-                               replay
- 0,6,x,y,time                  MotionNotify on poistion (x,y), used to
-                               replay
- 0,7-XXX,time                  MotionNotify on poistion (x,y), used to
-                               replay
- 1,request number,time         Recorded request, used during
-                               synchronisation
- 2,reply number,time           Recorded reply, used during
-                               synchronisation
- 3,error number,time           Recorded error, used during
-                               synchronisation
+ReplayInterpretation                
+directive                              
+0,0not valid                     
+0,1not valid                     
+0,2,keycode,timeKeyPress on key with          
+ keycode, used to replay       
+0,3,keycode,timeKeyRelease on key with        
+ keycode, used to replay       
+0,4,buttonButtonPress on button nr,     
+nr,timeused to replay                
+0,5,buttonButtonRelease on button nr,   
+nr,timeused to replay                
+0,6,x,y,timeMotionNotify on poistion      
+ (x,y), used to replay         
+0,7-XXX,timeMotionNotify on poistion      
+ (x,y), used to replay         
+1,requestRecorded request, used        
+number,timeduring synchronisation        
+2,replyRecorded reply, used during   
+number,timesynchronisation               
+3,errorRecorded error, used during   
+number,timesynchronisation               
 time is the time on the server the data was to the recording Xnee
 client. This time is used to keep the speed intact during replay. 
 
@@ -1153,94 +1172,152 @@ client. This time is used to keep the speed intact during replay.
 ------------------------
 
 
- Primitive                     Interpretation
- fake-motion                   Fakes a mouse motion
- fake-button-press             Fakes a button press
- fake-button-release           Fakes a button release
- fake-button                   Fakes a button press and release
- fake-key-press                Fakes a key press
- fake-key-release              Fakes a key release
- fake-key                      Fakes a key press and release
+PrimitiveInterpretation                
+fake-motionFakes a mouse motion          
+fake-button-pressFakes a button press          
+fake-button-releaseFakes a button release        
+fake-buttonFakes a button press and      
+ release                       
+fake-key-pressFakes a key press             
+fake-key-releaseFakes a key release           
+fake-keyFakes a key press and         
+ release                       
    
- Primitive      Primitive      Interpretation
- variable       values         
- x=value        integer        Sets the x position used in fake-motion to
-                               value
- x=value        +integer       Set the relative motion (x direction) used
-                               in fake-motion to value
- x=value        -integer       Set the relative motion (x direction) used
-                               in fake-motion to value
- y=value        Sets the y     
+PrimitivePrimitive      Interpretation 
+variablevalues                        
+x=valueinteger        Sets the x     
                 position used  
                 in             
                 fake-motion    
                 to value       
- y=value        +integer       Set the relative motion (y direction) used
-                               in fake-motion to value
- y=value        -integer       Set the relative motion (y direction) used
-                               in fake-motion to value
- button=value   set the        
-                button to      
-                fake with      
-                fake-button-press,
-                fake-button-release
-                and            
-                fake-button    
+x=value+integer       Set the        
+                relative       
+                motion (x      
+                direction)     
+                used in        
+                fake-motion    
                 to value       
- key=value      set the key    
-                to fake with   
-                fake-key-press,
-                fake-key-release
-                and fake-key   
+x=value-integer       Set the        
+                relative       
+                motion (x      
+                direction)     
+                used in        
+                fake-motion    
                 to value       
+y=valueSets the y                    
+ position used                 
+ in                            
+ fake-motion                   
+ to value                      
+y=value+integer       Set the        
+                relative       
+                motion (y      
+                direction)     
+                used in        
+                fake-motion    
+                to value       
+y=value-integer       Set the        
+                relative       
+                motion (y      
+                direction)     
+                used in        
+                fake-motion    
+                to value       
+button=valueset the                       
+ button to                     
+ fake with                     
+ fake-button-press,               
+ fake-button-release               
+ and                           
+ fake-button                   
+ to value                      
+key=valueset the key                   
+ to fake with                  
+ fake-key-press,               
+ fake-key-release               
+ and fake-key                  
+ to value                      
     
 
 6.4.5 Mark
 ----------
 
- First tokens   Arguments      Interpretation
- Mark           time string    Ignored. This feature is intended to let
-                               the user do whatever he/she       wants
-                               to. This will obviously lead to modifying
-                               the source code etc.
+FirstArguments      Interpretation 
+tokens                              
+Marktime string    Ignored. This  
+                feature is     
+                intended to    
+                let the user   
+                do whatever    
+                he/she        
+                wants to.      
+                This will      
+                obviously      
+                lead to        
+                modifying the  
+                source code    
+                etc.           
  
 
 6.4.6 Exec
 ----------
 
- First tokens   Arguments      Interpretation
- Exec           command        This is used during to replay to execute a
-                string         given command. If no       command
-                               string is found Xnee will try to
-                               read the command from the environment
-                               variable `XNEE_EXEC_COMMAND'
+FirstArguments      Interpretation 
+tokens                              
+Execcommand        This is used   
+ string         during to      
+                replay to      
+                execute a      
+                given          
+                command. If    
+                no            
+                command        
+                string is      
+                found Xnee     
+                will try to   
+                     read      
+                the command    
+                from the       
+                environment    
+                variable       
+                `XNEE_EXEC_COMMAND'
  
 
 6.4.7 Project information
 -------------------------
 
- Project information directives   Arguments
- ProjectName                      string s is the project name
- ProjectDescription               string s is the project description
- ProjectCreationDate              string s is the project creation date
- ProjectCreationProgram           string s is the name of the program
-                                  that create the project file
- ProjectCreationProgVersion       string s is the version of the program
-                                  that create the project file
- ProjectLastChangeDate            string s is the date of the last change
-                                  of the project file
- ProjectLastChangeProgram         string s is the name of the program
-                                  that last changed of the project file
- ProjectLastChangeVersion         string s is the version of the program
-                                  that last changed of the project file
- ProjectCurrentChangeDate         string s is the date of the current
-                                  change of the project file
- ProjectCurrentChangeProgram      string s is the name of the program
-                                  that current changed of the project
-                                  file
- ProjectCurrentChangeVersion      string s is the version of the program
-                                  that current changed of the project
-                                  file
+ProjectArguments                        
+information                                 
+directives                                 
+ProjectNamestring s is the project name     
+ProjectDescriptionstring s is the project          
+ description                      
+ProjectCreationDatestring s is the project          
+ creation date                    
+ProjectCreationProgramstring s is the name of the      
+ program that create the project  
+ file                             
+ProjectCreationProgVersionstring s is the version of the   
+ program that create the project  
+ file                             
+ProjectLastChangeDatestring s is the date of the      
+ last change of the project       
+ file                             
+ProjectLastChangeProgramstring s is the name of the      
+ program that last changed of     
+ the project file                 
+ProjectLastChangeVersionstring s is the version of the   
+ program that last changed of     
+ the project file                 
+ProjectCurrentChangeDatestring s is the date of the      
+ current change of the project    
+ file                             
+ProjectCurrentChangeProgramstring s is the name of the      
+ program that current changed of  
+ the project file                 
+ProjectCurrentChangeVersionstring s is the version of the   
+ program that current changed of  
+ the project file                 
 
 7 Xnee Internals
 ****************
@@ -1495,7 +1572,7 @@ is distributed with all packages and with CVS.
 `Where and how do I report bugs?'
      Turn on verbose mode `cnee --verbose' and save the printouts.
      Include all printouts and log files in the mail which is sent to
-     <cnee-bug@gnu.org>
+     <xnee-bug@gnu.org>
 `When setting ranges (integers), how do I know what numbers belong'
      to X11 data?  You can either type the data name directly (e.g
      MotionNotify) or you can use the print-xxx-name options.
@@ -1536,7 +1613,7 @@ is distributed with all packages and with CVS.
      Gnee's not an Event Emulator
 
 `Can you add xxx functionality to Xnee'
-     Send an email to <cnee-devel@gnu.org> and we'll consider it.
+     Send an email to <xnee-devel@gnu.org> and we'll consider it.
 
 `When starting Xnee I get noticed that I am missing RECORD extension'
      Your X server doesn't have the RECORD extension either loaded or
@@ -2013,89 +2090,90 @@ A.1 GNU Free Documentation License
 2 Index
 *******
 
-background:                                    See 1.3.      (line   79)
-Build VNC to be used with Xnee:                See 9.        (line 1575)
-can Xnee record more than one display:         See 9.        (line 1513)
-command line syntax:                           See 3.8.1.    (line  310)
-Comment directives:                            See 6.4.1.    (line 1031)
-Create a project file:                         See 6.1.1.    (line  980)
-Define a simple macro:                         See 5.6.1.    (line  816)
-Define another simple macro:                   See 5.6.2.    (line  846)
-development requirements:                      See 8.2.      (line 1487)
-Distribute the replaying of mouse motions:     See 5.4.2.    (line  738)
-Distribute the retyping of a file:             See 5.4.3.    (line  748)
-Distribute your mouse motions:                 See 5.4.1.    (line  724)
-distributing:                                  See 3.2.4.    (line  242)
-Example Xnee Session files:                    See 2.1.7.    (line  172)
-Exec directive:                                See 6.4.6.    (line 1211)
-FDL, GNU Free Documentation License:           See A.1.      (line 1618)
-features:                                      See 1.2.      (line   49)
-Functional overview:                           See 3.1.      (line  186)
-Getting started:                               See 2.1.      (line   98)
-GUI frontend for Xnee:                         See 9.        (line 1521)
-how to synchronise:                            See 7.1.2.    (line 1315)
-Insert marks Xnee with key combination:        See 3.9.7.    (line  389)
-Interupting xnee:                              See 3.9.      (line  328)
-key:                                           See 3.9.1.    (line  340)
-license:                                       See 9.        (line 1524)
-limit the data:                                See 3.9.10.   (line  421)
-limit the events:                              See 3.9.9.    (line  414)
-Mark directive:                                See 6.4.5.    (line 1201)
-missing RECORD extension:                      See 9.        (line 1542)
-modes:                                         See 3.2.      (line  204)
-modifier:                                      See 3.9.1.    (line  340)
-Pause Xnee with key combination:               See 3.9.5.    (line  375)
-Pausing and resuming Xnee with key:            See 5.5.2.    (line  790)
-plugins:                                       See 3.10.     (line  446)
-Project file:                                  See 6.1.      (line  972)
-Project information directive:                 See 6.4.7.    (line 1222)
-questions is sent where?:                      See 9.        (line 1494)
-ranges:                                        See 3.3.      (line  249)
-Record a gnumeric session:                     See 5.1.4.    (line  566)
+background:                                    See 1.3.      (line   80)
+Build VNC to be used with Xnee:                See 9.        (line 1652)
+can Xnee record more than one display:         See 9.        (line 1590)
+command line syntax:                           See 3.8.1.    (line  311)
+Comment directives:                            See 6.4.1.    (line 1047)
+Create a project file:                         See 6.1.1.    (line  996)
+Define a simple macro:                         See 5.6.1.    (line  819)
+Define another simple macro:                   See 5.6.2.    (line  849)
+development requirements:                      See 8.2.      (line 1564)
+Distribute the replaying of mouse motions:     See 5.4.2.    (line  741)
+Distribute the retyping of a file:             See 5.4.3.    (line  751)
+Distribute your mouse motions:                 See 5.4.1.    (line  727)
+distributing:                                  See 3.2.4.    (line  243)
+Example Xnee Session files:                    See 2.1.7.    (line  173)
+Exec directive:                                See 6.4.6.    (line 1265)
+FDL, GNU Free Documentation License:           See A.1.      (line 1695)
+features:                                      See 1.2.      (line   50)
+Functional overview:                           See 3.1.      (line  187)
+Getting started:                               See 2.1.      (line   99)
+GUI frontend for Xnee:                         See 9.        (line 1598)
+how to synchronise:                            See 7.1.2.    (line 1392)
+Insert marks Xnee with key combination:        See 3.9.7.    (line  390)
+Interupting xnee:                              See 3.9.      (line  329)
+key:                                           See 3.9.1.    (line  341)
+license:                                       See 9.        (line 1601)
+limit the data:                                See 3.9.10.   (line  422)
+limit the events:                              See 3.9.9.    (line  415)
+Mark directive:                                See 6.4.5.    (line 1245)
+missing RECORD extension:                      See 9.        (line 1619)
+modes:                                         See 3.2.      (line  205)
+modifier:                                      See 3.9.1.    (line  341)
+Pause Xnee with key combination:               See 3.9.5.    (line  376)
+Pausing and resuming Xnee with key:            See 5.5.2.    (line  793)
+plugins:                                       See 3.10.     (line  447)
+Project file:                                  See 6.1.      (line  988)
+Project information directive:                 See 6.4.7.    (line 1289)
+questions is sent where?:                      See 9.        (line 1571)
+ranges:                                        See 3.3.      (line  250)
+Record a gnumeric session:                     See 5.1.4.    (line  567)
 Record a gnumeric session with synchronisation data:See 5.1.5.
-                                                             (line  580)
-Record another display than the default:       See 5.7.5.    (line  905)
-Record keyboard:                               See 5.1.2.    (line  545)
-Record keyboard and mouse:                     See 5.1.3.    (line  555)
-Record mouse motions:                          See 5.1.1.    (line  535)
-recording:                                     See 3.2.1.    (line  218)
-Replay a gnumeric session:                     See 5.2.6.    (line  641)
+                                                             (line  582)
+Record another display than the default:       See 5.7.6.    (line  921)
+Record keyboard:                               See 5.1.2.    (line  546)
+Record keyboard and mouse:                     See 5.1.3.    (line  556)
+Record mouse motions:                          See 5.1.1.    (line  536)
+recording:                                     See 3.2.1.    (line  219)
+Replay a gnumeric session:                     See 5.2.6.    (line  644)
 Replay a gnumeric session with synchronisation data:See 5.2.7.
-                                                             (line  654)
+                                                             (line  657)
 Replay a gnumeric session with synchronisation data setting threshold:See 5.2.8.
-                                                             (line  670)
-Replay directive:                              See 6.4.3.    (line 1129)
-Replay keyboard actions:                       See 5.2.4.    (line  624)
-Replay keyboard and mouse:                     See 5.2.5.    (line  632)
-replay mouse motions:                          See 5.2.1.    (line  598)
-Replay to another display than the default:    See 5.7.6.    (line  913)
-replay using double speed:                     See 5.2.3.    (line  615)
-replay using half speed:                       See 5.2.2.    (line  606)
-replaying:                                     See 3.2.2.    (line  226)
-Report bugs?:                                  See 9.        (line 1496)
-requirements:                                  See 8.        (line 1474)
-retype:                                        See 3.2.3.    (line  234)
-Retype a file:                                 See 5.3.2.    (line  696)
-Retype the help printout:                      See 5.3.1.    (line  680)
-runtime requirements:                          See 8.1.      (line 1477)
-Script replay data:                            See 6.4.4.    (line 1155)
-Session file:                                  See 6.2.      (line  996)
-Settings:                                      See 6.4.2.    (line 1040)
-Shell scripts using Xnee:                      See 5.8.      (line  921)
-SIGTERM:                                       See 3.9.3.    (line  357)
-Stop Xnee with key:                            See 5.5.1.    (line  776)
-Stop Xnee with key combination:                See 3.9.4.    (line  368)
-Synchronisation:                               See 7.1.      (line 1255)
-Using a differet screen resolution:            See 5.7.3.    (line  880)
-Using human readable printouts:                See 5.7.2.    (line  872)
-Using no resolution translation:               See 5.7.4.    (line  892)
-Using verbose mode:                            See 5.7.1.    (line  864)
-What does the name Gnee mean?:                 See 9.        (line 1533)
-what numbers belong to X11 data?:              See 9.        (line 1500)
-why name it Xnee:                              See 9.        (line 1527)
-why synchronise:                               See 7.1.1.    (line 1262)
-Xnee Internals:                                See 7.        (line 1248)
-Xnee Settings Arguments:                       See 6.4.2.    (line 1110)
+                                                             (line  673)
+Replay directive:                              See 6.4.3.    (line 1146)
+Replay keyboard actions:                       See 5.2.4.    (line  627)
+Replay keyboard and mouse:                     See 5.2.5.    (line  635)
+replay mouse motions:                          See 5.2.1.    (line  601)
+Replay to another display than the default:    See 5.7.7.    (line  929)
+replay using double speed:                     See 5.2.3.    (line  618)
+replay using half speed:                       See 5.2.2.    (line  609)
+replaying:                                     See 3.2.2.    (line  227)
+Report bugs?:                                  See 9.        (line 1573)
+requirements:                                  See 8.        (line 1551)
+retype:                                        See 3.2.3.    (line  235)
+Retype a file:                                 See 5.3.2.    (line  699)
+Retype the help printout:                      See 5.3.1.    (line  683)
+runtime requirements:                          See 8.1.      (line 1554)
+Script replay data:                            See 6.4.4.    (line 1174)
+Session file:                                  See 6.2.      (line 1012)
+Settings:                                      See 6.4.2.    (line 1056)
+Shell scripts using Xnee:                      See 5.8.      (line  937)
+SIGTERM:                                       See 3.9.3.    (line  358)
+Stop Xnee with key:                            See 5.5.1.    (line  779)
+Stop Xnee with key combination:                See 3.9.4.    (line  369)
+Synchronisation:                               See 7.1.      (line 1332)
+Using a differet screen resolution:            See 5.7.3.    (line  883)
+Using a offset when replaying:                 See 5.7.4.    (line  895)
+Using human readable printouts:                See 5.7.2.    (line  875)
+Using no resolution translation:               See 5.7.5.    (line  908)
+Using verbose mode:                            See 5.7.1.    (line  867)
+What does the name Gnee mean?:                 See 9.        (line 1610)
+what numbers belong to X11 data?:              See 9.        (line 1577)
+why name it Xnee:                              See 9.        (line 1604)
+why synchronise:                               See 7.1.1.    (line 1339)
+Xnee Internals:                                See 7.        (line 1325)
+Xnee Settings Arguments:                       See 6.4.2.    (line 1128)
 Table of Contents
 *****************
 
@@ -2180,9 +2258,10 @@ Xnee Manual
     5.7.1 Using verbose mode
     5.7.2 Using human readable printouts
     5.7.3 Using a differet screen resolution
-    5.7.4 Using no resolution translation
-    5.7.5 Record another display than the default
-    5.7.6 Replay to another display than the default
+    5.7.4 Using a offset when replaying
+    5.7.5 Using no resolution translation
+    5.7.6 Record another display than the default
+    5.7.7 Replay to another display than the default
   5.8 Shell scripts using Xnee
 6 File types and format
   6.1 Project file
