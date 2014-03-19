@@ -1,2 +1,0 @@
-|
-<a href="xnee_description.html">Description</a> | <a href="xnee_news.html">News</a> | <a href="xnee_questions.html">Questions</a> | <a href="xnee_somewords.html">Some words</a> | <a href="xnee_todo.html">To do</a> | <a href="xnee_documentation.html">Documentation</a> | <a href="xnee_download.html">Download</a> | <a href="xnee_links.html">Links</a> | 

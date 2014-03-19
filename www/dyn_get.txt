@@ -1,2 +1,0 @@
-<script type="text/javascript" src="xnee.js"></script>
-<script type="text/javascript" src="menu_com.js"></script>
